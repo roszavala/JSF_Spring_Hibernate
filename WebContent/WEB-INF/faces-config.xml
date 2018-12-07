@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<faces-config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    version="2.0"
+    xmlns="http://java.sun.com/xml/ns/javaee"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+      http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd" >
+    
+      <application>
+	    <variable-resolver>
+	      org.springframework.web.jsf.DelegatingVariableResolver
+	    </variable-resolver>
+  	</application>
+	
+    <managed-bean>
+		<managed-bean-name>beanRegistro</managed-bean-name>
+		<managed-bean-class>com.cotic.controller.RegistroController</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+		<managed-property>
+			<property-name>registroBusiness</property-name>
+			<value>#{registroBusiness}</value>
+		</managed-property>
+	</managed-bean>
+	
+</faces-config>

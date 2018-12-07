@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<f:view locale="#{facesContext.externalContext.requestLocale}">
+<h:head>
+	<title>Registro de aspirantes</title>
+</h:head>
+<h:body>
+	<h:form>
+		<h:messages/>
+		<h:outputText value="Registro de aspirantes al curso JSF CIDESI"/>
+		<h:panelGrid columns="2" rows="7">			
+			<h:outputText value="Nombre(s):"/><h:inputText value="#{beanRegistro.nombre}"/>
+			<h:outputText value="Apellido paterno:"/><h:inputText value="#{beanRegistro.apPaterno}"/>
+			<h:outputText value="Apellido materno:"/><h:inputText value="#{beanRegistro.apMaterno}"/>
+			<h:outputText value="Calle:"/><h:inputText value="#{beanRegistro.calle}"/>
+			<h:outputText value="Número"/><h:inputText value="#{beanRegistro.numero}"/>
+		</h:panelGrid>	
+		<h:commandButton value="Registrar" action="#{beanRegistro.registrar}" render="tabla1"/>	
+		<h:commandButton value="Guardar" action="#{beanRegistro.guardar}" render="tabla1"/>	
+		<br/>	
+		<h:dataTable id="tabla1" var="var" value="#{beanRegistro.aspirantes}" border="1" styleClass="mainTable"
+				captionClass="caption1" headerClass="heading" rowClasses="even,odd" binding="#{beanRegistro.tabla}">			
+				<h:column>
+					<f:facet name="header">Id</f:facet>
+					#{var.idAspirante}
+				</h:column>	
+				<h:column>
+					<f:facet name="header">Nombre(s)</f:facet>
+					#{var.nombre}
+				</h:column>	
+				<h:column>
+					<f:facet name="header">Apellido Paterno</f:facet>
+					#{var.apPaterno}
+				</h:column>	
+				<h:column>
+					<f:facet name="header">Apellido Materno</f:facet>
+					#{var.apMaterno}
+				</h:column>	
+				<h:column>
+					<f:facet name="header">Calle</f:facet>
+					#{var.calle}
+				</h:column>	
+				<h:column>
+					<f:facet name="header">Número</f:facet>
+					#{var.numero}
+				</h:column>
+				<h:column>
+					<f:facet name="header">Modificar</f:facet>
+					<h:commandButton value="Modificar" action="#{beanRegistro.modificar}" />
+				</h:column>	
+				<h:column>
+					<f:facet name="header">Eliminar</f:facet>
+					<h:commandButton value="Eliminar" action="#{beanRegistro.eliminar}" />
+				</h:column>	
+			</h:dataTable>				
+	</h:form>
+</h:body>
+</f:view>
+</html>
